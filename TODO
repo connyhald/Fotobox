@@ -1,0 +1,11 @@
+
+* Countdown
+* Mehrere Bilder nacheinander
+* Bilder an C++ schicken (vielleicht ohne zu speichern)
+  * Oder halt Bild 1-4 machen. Collage erstellen. Bilder löschen.
+* Collage erstellen QImage etc...
+* QPrinter zum Drucken verwenden
+* Während Bilder gemacht werden: Fade to Black. Dann stört das Display nicht,
+  und man sieht nicht, das es ruckelt
+* Wireing-Pi ausprobieren für GPIO
+*
