@@ -1,8 +1,10 @@
 TEMPLATE = app
 
-QT += qml quick
+QT += qml quick printsupport
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    app.cpp \
+    worker.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,3 +16,7 @@ include(deployment.pri)
 
 DISTFILES += \
     TODO
+
+HEADERS += \
+    app.h \
+    worker.h

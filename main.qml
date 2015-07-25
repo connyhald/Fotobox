@@ -7,6 +7,54 @@ Window {
     height: 768
 
     visible: true
+
+    InitialWaiting {
+        id: initialWaiting
+        focus: true
+        onNext: {
+            visible = false
+            preview.visible = true
+            preview.focus = true
+            preview.start()
+        }
+    }
+
+    Preview {
+        id: preview
+        visible: false
+        onNext: {
+            visible = false
+            shooter.visible = true
+            shooter.focus = true
+            shooter.start()
+        }
+    }
+
+    Shooter {
+        id: shooter
+        visible: false
+        onNext: {
+            visible = false
+            processing.visible = true
+            processing.focus = true
+            processing.start()
+        }
+    }
+
+    Processing {
+        id: processing
+        visible: false
+        onNext: {
+            visible = false
+            initialWaiting.visible = true
+            initialWaiting.focus = true
+            initialWaiting.start()
+        }
+    }
+
+
+    /*
+
     Rectangle {
         anchors.fill: parent
 
@@ -18,12 +66,12 @@ Window {
             imageCapture {
                 id: capture
 
-                /*
+
                 onImageCaptured: {
                     // Show the preview in an Image
                     //photoPreview.source = preview
                 }
-                */
+
 
                 onCapturedImagePathChanged: console.log(capture.capturedImagePath)
                 onImageSaved: console.log("Saved: " + path)
@@ -77,7 +125,7 @@ Window {
             anchors.margins: 50
         }
 
-        /*
+
         Rectangle {
             id: rect
             width: 200
@@ -95,7 +143,7 @@ Window {
                 to: 359
             }
         }
-        */
+
     }
 
     MouseArea {
@@ -116,4 +164,5 @@ Window {
         //camera.deviceId = cams[0].deviceId
 
     }
+    */
 }

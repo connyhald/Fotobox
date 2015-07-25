@@ -9,3 +9,19 @@
   und man sieht nicht, das es ruckelt
 * Wireing-Pi ausprobieren für GPIO
 *
+
+Tests auf Raspi
+* Camera erzeugt ca. 100% CPU Last
+* Preview langsam, aber geht
+* Keine Möglichkeit die Größe der Fotos zu beeinflussen
+* Rotierendes Quadrat ca. 5% CPU Last
+* Camera nach stop() -> keine Last mehr
+--> D.h. wir sollten die Camera immer stoppen, wenn nicht benötigt
+--> Preview nur am Anfang zeigen, damit sich die Leute positionieren können
+* Es treten immer wieder Fehler auf. Entweder SEGV oder, Camera not ready
+--> Respawn einrichten und bei Fehlern der Camera entwerder Camera.start/stop() oder App neu starten
+
+
+=== Countdowns ===
+Verschiedene Countdown Komponenten in einen Ordner legen. Jede Komponente kann ihr eigenes Timing haben,
+wenn sie fertig ist sendet sie signal "fire" (oder so) und die App macht weiter....
