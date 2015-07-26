@@ -3,7 +3,6 @@
         <file>main.qml</file>
         <file>InitialWaiting.qml</file>
         <file>Preview.qml</file>
-        <file>Shooter.qml</file>
         <file>Processing.qml</file>
     </qresource>
 </RCC>

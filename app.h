@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QImage>
 #include <QThread>
+#include <QVariantList>
 
 class Backend : public QObject
 {
@@ -17,7 +18,7 @@ signals:
 
 
 public slots:
-    void createFinalImageAndPrint();
+    void createFinalImageAndPrint(QStringList paths);
 
 private:
     QString m_workingDir;

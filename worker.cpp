@@ -6,16 +6,27 @@
 #include <QBrush>
 #include <QColor>
 #include <QtPrintSupport/QPrinter>
+#include <QImageReader>
 
 Worker::Worker(QString workingDir, QObject *parent) : QObject(parent)
 {
     m_workingDir = workingDir;
 }
 
+void Worker::setPaths(QStringList paths)
+{
+     m_paths = paths;
+}
+
 void Worker::work()
 {
-   QImage image = createImage();
-   printImage(image);
+    if (m_paths.length() != 4) {
+        qDebug() << "Not exactly 4 pictures, but we need 4. Abort.";
+        return;
+    }
+
+    QImage image = createImage();
+    printImage(image);
 }
 
 /*
@@ -26,12 +37,17 @@ void Worker::work()
  */
 QImage Worker::createImage()
 {
-    qDebug() << "Creating final image";
+    qDebug() << "Creating final image:" << m_paths;
 
-    QImage img1(m_workingDir + "1.jpg");
-    QImage img2(m_workingDir + "2.jpg");
-    QImage img3(m_workingDir + "3.jpg");
-    QImage img4(m_workingDir + "4.jpg");
+    QImage img1(m_paths[0]);
+    QImage img2(m_paths[1]);
+    QImage img3(m_paths[2]);
+    QImage img4(m_paths[3]);
+
+    if (img1.isNull() || img2.isNull() || img3.isNull() || img4.isNull()) {
+        qWarning() << "Could not load one of the image files. Abort.";
+        return QImage();
+    }
 
     int tWidth = 2960;
     int tHeight = 2000;

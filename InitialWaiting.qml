@@ -21,12 +21,12 @@ Rectangle {
     }
 
     Keys.onReturnPressed: {
-        backend.createFinalImageAndPrint()
+        backend.createFinalImageAndPrint(["1","2","3","4"])
     }
 
     Timer {
         id: timer
-        interval: 2000
+        interval: 500
         running: false
         repeat: false
         onTriggered: {

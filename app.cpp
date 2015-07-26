@@ -13,8 +13,12 @@ Backend::Backend(QObject *parent) : QObject(parent)
     m_thread.start();
 }
 
-void Backend::createFinalImageAndPrint()
+void Backend::createFinalImageAndPrint(QStringList paths)
 {
-    QTimer::singleShot(0, m_worker, SLOT(work()));
+    qDebug() << "PROCESSING:" << paths;
+
+    m_worker->setPaths(paths);
+
+    QTimer::singleShot(0, m_worker, SLOT(work(paths)));
 }
 
