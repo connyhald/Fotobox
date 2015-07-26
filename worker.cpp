@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QtPrintSupport/QPrinter>
 #include <QImageReader>
+#include <QDateTime>
 
 Worker::Worker(QString workingDir, QObject *parent) : QObject(parent)
 {
@@ -72,9 +73,12 @@ QImage Worker::createImage()
     p.drawImage(targetRect4, img4, img4.rect());
     p.end();
 
-    bool success = targetImage.save(m_workingDir + "qt-out.jpg", "JPEG");
+    QDateTime now = QDateTime::currentDateTime().toLocalTime();
+    QString nowString = now.toString("yyyyMMdd-HHhhss");
+    QString path = m_workingDir + "fb-" + nowString + ".jpg";
+    bool success = targetImage.save(path, "JPEG");
 
-    qDebug() << "Image created successfully:" << success;
+    qDebug() << "Image created successfully:" << success << path;
     emit imageReadyForPrint();
 
     return targetImage;

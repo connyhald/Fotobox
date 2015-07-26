@@ -3,10 +3,15 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QFontDatabase>
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Light.ttf");
+    QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Regular.ttf");
+    QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Bold.ttf");
 
     Backend backend;
     QQmlApplicationEngine engine;

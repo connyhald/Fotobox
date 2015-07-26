@@ -8,12 +8,58 @@ Rectangle {
 
     anchors.fill: parent
 
-    Text {
-        id: text
-        text: "Bitte Geld einwerfen"
-        font.pixelSize: 50
-        color: "white"
-        anchors.centerIn: parent
+    Column {
+        spacing: 20
+
+        /*
+        populate: Transition {
+            NumberAnimation {
+                properties: "opacity"
+                easing.type: Easing.InOutQuad
+                duration: 2000
+            }
+        }
+        */
+
+        anchors.fill: parent
+        anchors.margins: 50
+
+        ScaleableText {
+            id: txt
+            color: "#ff00aa"
+            text: "Hallo Ihr Hübschen!"
+            font.family: "Roboto"
+            font.weight: Font.Thin
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
+
+        ScaleableText {
+            text: "Werft bitte eine Münze zwischen 50ct und 2€ ein!"
+            color: "white"
+            font.family: "Roboto"
+            font.weight: Font.Normal
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
+
+        ScaleableText {
+            text: "Das ist eine Spende an das Brautpaar, also seid großzügig :-)"
+            color: "#ff00aa"
+            font.family: "Roboto"
+            font.weight: Font.Normal
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
+
+        ScaleableText {
+            text: "Los geht's!"
+            color: "white"
+            font.family: "Roboto"
+            font.weight: Font.Normal
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
     }
 
     Keys.onSpacePressed: {
@@ -35,33 +81,13 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        id: rect
-        width: 200
-        height: 200
-        color: "pink"
-        anchors.centerIn: parent
-
-        PropertyAnimation {
-            target: rect
-            running: true
-            loops: Animation.Infinite
-            property: "rotation"
-            duration: 1000
-            from: 0
-            to: 359
-        }
-    }
-
     function start() {
-        text.text = "Bitte Geld einwerfen"
+        // Start animation or stuff
     }
 
     // TODO: Meldung passend to Geldeinfwurf. Video vom Supergeili
     function onMoneyAccepted() {
-        console.log("POW WOW FIREWORK")
-        text.text = "Wow, Danke, 2€, ihr seid so geil !!!"
-        timer.start()
+        next();
     }
 
 }

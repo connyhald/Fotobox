@@ -18,6 +18,7 @@ Item {
         for (var i = 0; i < cams.length; i++) {
             console.log(cams[i].deviceId)
         }
+        camera.stop()
         // Setting the device seems not to work with gphoto2
         //camera.deviceId = cams[0].deviceId
     }
@@ -47,6 +48,8 @@ Item {
         id: output
         source: camera
         fillMode: Image.PreserveAspectCrop
+        // Mirror the view finder to make it more natural
+        transform: Rotation { origin.x: width/2; origin.y: height/2; axis { x: 0; y: 1; z: 0 } angle: 180 }
         anchors.fill: parent
     }
 
@@ -130,7 +133,12 @@ Item {
     }
 
     function start() {
+        camera.start()
+        shade.opacity = 0
         root.countdown = 10
+        root.picsToTake = 4
+        root.imagePaths = []
+        countdownItem.visible = true
         timer.start()
         countdownAnim.start()
     }
@@ -148,6 +156,7 @@ Item {
             timer.start()
         } else {
             console.log(root.imagePaths)
+            camera.stop()
             backend.createFinalImageAndPrint(root.imagePaths)
             root.next();
         }
