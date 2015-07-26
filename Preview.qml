@@ -26,6 +26,7 @@ Item {
     Camera {
         id: camera
         captureMode: Camera.CaptureStillImage
+        flash.mode: Camera.FlashOn
 
         // We manually set the exif orientation, because some web cams (like the one
         // on the Dell XPS13 do not set a proper orientation and Qt 5.5.0 struggles to
