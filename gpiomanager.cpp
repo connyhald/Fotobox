@@ -24,13 +24,15 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
 
     // Setup wiringPi
-    if (wiringPiSetup() < 0) {
+    //if (wiringPiSetup() < 0) {
+    if (wiringPiSetupSys() < 0) {
         qWarning() << "Unable to setup wiringPi";
         return;
     }
 
     // GPIO 27 -> PIN 2
-    if (wiringPiISR (2, INT_EDGE_RISING, &handleInterrupt) < 0) {
+    //if (wiringPiISR (2, INT_EDGE_RISING, &handleInterrupt) < 0) {
+    if (wiringPiISR (27, INT_EDGE_RISING, &handleInterrupt) < 0) {
         qWarning() << "Unable to setup ISR";
         return;
     }
