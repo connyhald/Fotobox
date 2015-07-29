@@ -79,7 +79,7 @@ QImage Worker::createImage()
     QString path = m_workingDir + "fb-" + nowString + ".jpg";
     bool success = targetImage.save(path, "JPEG");
 
-    qDebug() << "Image created successfully:" << success << path;
+    qDebug() << "Image saved successfully:" << success << path;
     emit imageReadyForPrint();
 
     return targetImage;

@@ -9,6 +9,7 @@
 Backend::Backend(QObject *parent) : QObject(parent)
 {
     // TODO: Crashes if empty list is returned. Fix.
+    qDebug() << "Picture loc:" << QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     m_workingDir = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)[0];
 
     // Setup the worker thread
