@@ -27,6 +27,8 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
         return;
     }
 
+    m_pulseCount = 0;
+
     // If we do not get the next pulse within 200ms, we will stop counting and report the result
     m_timer.setInterval(200);
     m_timer.setSingleShot(true);
@@ -43,8 +45,8 @@ GpioManager* GpioManager::instance() {
 // Static called from a thread originally created by wireingpi
 void GpioManager::handleInterrupt() {
     qDebug() << "Got a pulse:" << QDateTime::currentDateTime().time();
-    //QTimer::singleShot(0, m_instance, SLOT(countAndSetTimeout()));
-    QMetaObject::invokeMethod(m_instance, "countAndSetTimeout", Qt::QueuedConnection);
+    QTimer::singleShot(0, m_instance, SLOT(countAndSetTimeout()));
+    //QMetaObject::invokeMethod(m_instance, "countAndSetTimeout", Qt::QueuedConnection);
 }
 
 void GpioManager::countAndSetTimeout() {
