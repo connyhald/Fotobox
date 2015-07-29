@@ -43,7 +43,8 @@ GpioManager* GpioManager::instance() {
 // Static called from a thread originally created by wireingpi
 void GpioManager::handleInterrupt() {
     qDebug() << "Got a pulse:" << QDateTime::currentDateTime().time();
-    QTimer::singleShot(0, m_instance, SLOT(countAndSetTimeout()));
+    //QTimer::singleShot(0, m_instance, SLOT(countAndSetTimeout()));
+    QMetaObject::invokeMethod(m_instance, "countAndSetTimeout", Qt::QueuedConnection);
 }
 
 void GpioManager::countAndSetTimeout() {
