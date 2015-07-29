@@ -91,6 +91,9 @@ void Worker::printImage(QImage image)
 
     qDebug() << "Start print";
     QPrinter printer;
+
+    qDebug() << "Printer is valid:" << printer.isValid();
+
     printer.setResolution(300);
     printer.setPaperSize(QPrinter::Postcard);
     printer.setFullPage(true);
