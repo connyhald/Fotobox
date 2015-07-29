@@ -51,6 +51,7 @@ QImage Worker::createImage()
         return QImage();
     }
 
+    // TODO: This is twice the resulution we need, leaf it?
     int tWidth = 2960;
     int tHeight = 2000;
     int outerBorder = 30;
@@ -76,11 +77,11 @@ QImage Worker::createImage()
 
     QDateTime now = QDateTime::currentDateTime().toLocalTime();
     QString nowString = now.toString("yyyyMMdd-HHhhss");
-    QString path = m_workingDir + "fb-" + nowString + ".jpg";
+    QString path = m_workingDir + "/fb-" + nowString + ".jpg";
     bool success = targetImage.save(path, "JPEG");
 
     qDebug() << "Image saved successfully:" << success << path;
-    emit imageReadyForPrint();
+    //emit imageReadyForPrint();
 
     return targetImage;
 }
@@ -91,7 +92,8 @@ void Worker::printImage(QImage image)
     // Use name for printer.setName() ... probably...
 
     qDebug() << "Start print";
-    QPrinter printer;
+    // TODO: Try high res. Without size of page is: 1746x1183 px => about 300 dpi, which should be fine
+    QPrinter printer(QPrinter::HighResolution);
 
     qDebug() << "Printer is valid:" << printer.isValid();
     qDebug() << "Printer name:" << printer.printerName();
@@ -101,12 +103,15 @@ void Worker::printImage(QImage image)
     qDebug() << "Printers:" << pnames;
 
     printer.setResolution(300);
-    printer.setPaperSize(QPrinter::Postcard);
+    //printer.setPaperSize(QPrinter::Postcard);
+    printer.setPaperSize(QPrinter::A6); // TODO: Maybe this is borderless???
+    //printer.setPaperSize(QSizeF(150, 100), QPrinter::Millimeter); // Or this
     printer.setFullPage(true);
     printer.setOrientation(QPrinter::Landscape);
     printer.setColorMode(QPrinter::Color);
 
-    qDebug() << "Print size:" << printer.paperRect();
+    qDebug() << "Print size:" << printer.paperRect() << "Postcard is/was: 1746x1183";
+    qDebug() << "Max phys. size:" << QPrinterInfo(printer).maximumPhysicalPageSize();
 
     QPainter painter;
     painter.begin(&printer);
@@ -114,5 +119,5 @@ void Worker::printImage(QImage image)
     painter.end();
 
     qDebug() << "Send to printer";
-    emit imagePrinted();
+    //emit imagePrinted();
 }

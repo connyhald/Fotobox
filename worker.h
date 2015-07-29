@@ -14,8 +14,8 @@ public:
     void setPaths(QStringList paths);
 
 signals:
-   void imageReadyForPrint();
-   void imagePrinted();
+   //void imageReadyForPrint();
+   //void imagePrinted();
 
 public slots:
     void work();
