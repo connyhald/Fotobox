@@ -98,7 +98,7 @@ Rectangle {
 
     function start() {
         // Start animation or stuff
-        debugTimer.start()
+        //debugTimer.start()
     }
 
     // TODO: Meldung passend to Geldeinfwurf. Video vom Supergeili
