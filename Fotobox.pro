@@ -4,9 +4,12 @@ QT += qml quick printsupport
 
 SOURCES += main.cpp \
     app.cpp \
-    worker.cpp
+    worker.cpp \
+    gpiomanager.cpp
 
 RESOURCES += qml.qrc
+
+LIBS += -lwiringPi
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -19,4 +22,5 @@ DISTFILES += \
 
 HEADERS += \
     app.h \
-    worker.h
+    worker.h \
+    gpiomanager.h
