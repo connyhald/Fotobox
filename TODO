@@ -1,19 +1,18 @@
 
-* Countdown
-* Mehrere Bilder nacheinander
-* Bilder an C++ schicken (vielleicht ohne zu speichern)
-  * Oder halt Bild 1-4 machen. Collage erstellen. Bilder löschen.
-* Collage erstellen QImage etc...
-* QPrinter zum Drucken verwenden
-* Während Bilder gemacht werden: Fade to Black. Dann stört das Display nicht,
+* OK Countdown
+* OK Mehrere Bilder nacheinander
+* OK Bilder an C++ schicken (vielleicht ohne zu speichern)
+  * OK Oder halt Bild 1-4 machen. Collage erstellen. Bilder löschen.
+* OK Collage erstellen QImage etc...
+* OK QPrinter zum Drucken verwenden
+* OK Während Bilder gemacht werden: Fade to Black. Dann stört das Display nicht,
   und man sieht nicht, das es ruckelt
-* Wireing-Pi ausprobieren für GPIO
-*
+* OK Wireing-Pi ausprobieren für GPIO
+
 
 Tests auf Raspi
 * Camera erzeugt ca. 100% CPU Last
 * Preview langsam, aber geht
-* Keine Möglichkeit die Größe der Fotos zu beeinflussen
 * Rotierendes Quadrat ca. 5% CPU Last
 * Camera nach stop() -> keine Last mehr
 --> D.h. wir sollten die Camera immer stoppen, wenn nicht benötigt
@@ -25,3 +24,12 @@ Tests auf Raspi
 === Countdowns ===
 Verschiedene Countdown Komponenten in einen Ordner legen. Jede Komponente kann ihr eigenes Timing haben,
 wenn sie fertig ist sendet sie signal "fire" (oder so) und die App macht weiter....
+
+
+TODO
+------------
+* Respawn Skript
+* UI-Test und Feinschliff
+* Gedrucktes Bild ist zu klein
+* CUPS auf Pi nach außen öffnen
+* Systemlast prüfen (Last & Temperatur)
