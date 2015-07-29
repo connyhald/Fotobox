@@ -5,7 +5,8 @@
 #include <QPainter>
 #include <QBrush>
 #include <QColor>
-#include <QtPrintSupport/QPrinter>
+#include <QPrinter>
+#include <QPrinterInfo>
 #include <QImageReader>
 #include <QDateTime>
 
@@ -93,6 +94,11 @@ void Worker::printImage(QImage image)
     QPrinter printer;
 
     qDebug() << "Printer is valid:" << printer.isValid();
+    qDebug() << "Printer name:" << printer.printerName();
+    qDebug() << "Printer prog:" << printer.printProgram();
+
+    QStringList pnames = QPrinterInfo::availablePrinterNames();
+    qDebug() << "Printers:" << pnames;
 
     printer.setResolution(300);
     printer.setPaperSize(QPrinter::Postcard);
