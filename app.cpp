@@ -4,10 +4,12 @@
 
 #include <QDebug>
 #include <QTimer>
+#include <QStandardPaths>
 
 Backend::Backend(QObject *parent) : QObject(parent)
 {
-    m_workingDir = "/home/conny/tmp/fotobox/";
+    // TODO: Crashes if empty list is returned. Fix.
+    m_workingDir = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)[0];
 
     // Setup the worker thread
     m_worker = new Worker(m_workingDir);
