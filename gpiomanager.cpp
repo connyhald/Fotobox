@@ -6,6 +6,14 @@
 
 GpioManager * GpioManager::m_instance = 0;
 
+/*
+ * With our coin acceptor the time between two rising edges is about 150ms
+ * using the 'fast' setting. So if we would use 30 pulses, which is the
+ * maximum we would need to wait 4.5s to read in all pulses.
+ *
+ * We will use a maximum of 3 pulses which should be fast enough.
+ */
+
 GpioManager::GpioManager(QObject *parent) : QObject(parent)
 {
     if (wiringPiSetup() < 0) {
@@ -18,6 +26,11 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
         qDebug() << "Unable to setup ISR";
         return;
     }
+
+    // If we do not get the next pulse within 200ms, we will stop counting and report the result
+    m_timer.setInterval(200);
+    m_timer.setSingleShot(true);
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
 }
 
 GpioManager* GpioManager::instance() {
@@ -28,6 +41,15 @@ GpioManager* GpioManager::instance() {
 }
 
 void GpioManager::handleInterrupt() {
-    qDebug() << "INT INT INT" << QDateTime::currentDateTime();
-    // TODO: Emit signal
+    qDebug() << "Got a pulse:" << QDateTime::currentDateTime().time();
+    // Count pulse and start or restart timer
+    m_instance->m_pulseCount++;
+    m_instance->m_timer.start();
+}
+
+void GpioManager::onTimeout() {
+    qDebug() << "Got timeout" << QDateTime::currentDateTime().time();
+    qDebug() << "Until timeout counted" << m_pulseCount << "pulses";
+    emit pulsesReceived(m_pulseCount);
+    m_pulseCount = 0;
 }
