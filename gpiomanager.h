@@ -15,6 +15,7 @@ signals:
     void pulsesReceived(int pulseCount);
 
 private slots:
+    void countAndSetTimeout();
     void onTimeout();
 
 private:

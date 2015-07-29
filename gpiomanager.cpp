@@ -7,9 +7,9 @@
 GpioManager * GpioManager::m_instance = 0;
 
 /*
- * With our coin acceptor the time between two rising edges is about 150ms
+ * With our coin acceptor the time between two rising edges is about 130ms
  * using the 'fast' setting. So if we would use 30 pulses, which is the
- * maximum we would need to wait 4.5s to read in all pulses.
+ * maximum we would need to wait 4 s to read in all pulses.
  *
  * We will use a maximum of 3 pulses which should be fast enough.
  */
@@ -40,11 +40,16 @@ GpioManager* GpioManager::instance() {
     return m_instance;
 }
 
+// Static called from a thread originally created by wireingpi
 void GpioManager::handleInterrupt() {
     qDebug() << "Got a pulse:" << QDateTime::currentDateTime().time();
+    QTimer::singleShot(0, m_instance, SLOT(countAndSetTimeout()));
+}
+
+void GpioManager::countAndSetTimeout() {
     // Count pulse and start or restart timer
-    m_instance->m_pulseCount++;
-    m_instance->m_timer.start();
+    m_pulseCount++;
+    m_timer.start();
 }
 
 void GpioManager::onTimeout() {
