@@ -14,8 +14,6 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Regular.ttf");
     QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Bold.ttf");
 
-    GpioManager* gpio = GpioManager::instance();
-
     Backend backend;
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("backend", &backend);

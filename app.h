@@ -15,10 +15,13 @@ public:
     explicit Backend(QObject *parent = 0);
 
 signals:
-
+    void coinAccepted(int cents);
 
 public slots:
     void createFinalImageAndPrint(QStringList paths);
+
+private slots:
+    void onPulsesReceived(int pulseCount);
 
 private:
     QString m_workingDir;

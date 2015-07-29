@@ -66,6 +66,11 @@ Rectangle {
         onMoneyAccepted()
     }
 
+    Connections {
+        target: backend
+        onCoinAccepted: onMoneyAccepted()
+    }
+
     // TODO: Just for debugging
     Timer {
         id: debugTimer
