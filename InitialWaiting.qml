@@ -72,12 +72,14 @@ Rectangle {
     }
 
     // TODO: Just for debugging
+    /*
     Timer {
         id: debugTimer
         running: true
         interval: 5000
         onTriggered: onMoneyAccepted()
     }
+    */
 
     Keys.onReturnPressed: {
         backend.createFinalImageAndPrint(["1","2","3","4"])
