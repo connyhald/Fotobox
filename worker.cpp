@@ -107,7 +107,7 @@ void Worker::printImage(QImage image)
     printer.setPaperSize(QPrinter::A6); // TODO: Maybe this is borderless???
     //printer.setPaperSize(QSizeF(150, 100), QPrinter::Millimeter); // Or this
     printer.setFullPage(true);
-    printer.setOrientation(QPrinter::Landscape);
+    printer.setOrientation(QPrinter::Portrait);
     printer.setColorMode(QPrinter::Color);
 
     qDebug() << "Print size:" << printer.paperRect() << "Postcard is/was: 1746x1183";
