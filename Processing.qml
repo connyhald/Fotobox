@@ -14,7 +14,7 @@ Rectangle {
         anchors.margins: 50
 
         ScaleableText {
-            text: "Ihr ward Hammer!"
+            text: "Ihr wart Hammer!"
             color: "white"
             anchors.left: parent.left
             anchors.right: parent.right
