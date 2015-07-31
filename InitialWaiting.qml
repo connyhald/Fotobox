@@ -4,6 +4,8 @@ Rectangle {
     id: root
     signal next
 
+    property bool active: false
+
     color: "darkgray"
 
     anchors.fill: parent
@@ -87,6 +89,7 @@ Rectangle {
     }
     */
 
+    /*
     Timer {
         id: timer
         interval: 500
@@ -97,15 +100,22 @@ Rectangle {
             root.next()
         }
     }
+    */
 
     function start() {
         // Start animation or stuff
         //debugTimer.start()
+        root.active = true
     }
 
     // TODO: Meldung passend to Geldeinfwurf. Video vom Supergeili
     function onMoneyAccepted() {
-        next();
+        if (root.active) {
+            next()
+            root.active = false
+        } else {
+            console.log("Monkey accepted, but not reacting since we are not active")
+        }
     }
 
 }
