@@ -51,6 +51,8 @@ Item {
         fillMode: Image.PreserveAspectCrop
         // Mirror the view finder to make it more natural
         transform: Rotation { origin.x: width/2; origin.y: height/2; axis { x: 0; y: 1; z: 0 } angle: 180 }
+        // Our camera is mounted upside down
+        rotation: 180
         anchors.fill: parent
     }
 
