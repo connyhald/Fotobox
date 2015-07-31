@@ -33,6 +33,6 @@ TODO
 * Gedrucktes Bild ist zu klein
 * OK CUPS auf Pi nach außen öffnen
 * Systemlast prüfen (Last & Temperatur)
-* Kamera schläft nach einer Weile ein
+* OK Kamera schläft nach einer Weile ein
 * CMYK in CUPS ausprobieren
-
+* Münzeinwurf ignorieren, wenn nicht in InitialWaiting

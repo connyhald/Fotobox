@@ -33,8 +33,12 @@ void Backend::createFinalImageAndPrint(QStringList paths)
 
 void Backend::onPulsesReceived(int pulseCount)
 {
-    if (pulseCount == 10 || pulseCount == 11) {
+    if (pulseCount <= 2) {
+        emit coinAccepted(50);
+        return;
+    } else if (pulseCount <= 4) {
         emit coinAccepted(100);
+        return;
     } else {
         emit coinAccepted(200);
     }

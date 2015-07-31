@@ -81,9 +81,11 @@ Rectangle {
     }
     */
 
+    /*
     Keys.onReturnPressed: {
         backend.createFinalImageAndPrint(["1","2","3","4"])
     }
+    */
 
     Timer {
         id: timer
