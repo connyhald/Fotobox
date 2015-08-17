@@ -26,6 +26,7 @@ private:
 private:
     explicit GpioManager(QObject *parent = 0);
     static void handleInterrupt();
+    static void handleReboot();
 
 
 };

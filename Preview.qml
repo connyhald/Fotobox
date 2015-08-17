@@ -2,7 +2,7 @@ import QtQuick 2.5
 import QtMultimedia 5.4
 import QtGraphicalEffects 1.0
 
-Item {
+Rectangle {
     id: root
 
     signal next
@@ -11,6 +11,7 @@ Item {
     property int picsToTake: 4
     property var imagePaths: []
 
+    color: "black"
     anchors.fill: parent
 
     Component.onCompleted: {

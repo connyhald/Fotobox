@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QDateTime>
+#include <QProcess>
 #include <wiringPi.h>
 
 GpioManager * GpioManager::m_instance = 0;
@@ -24,7 +25,6 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
 
     // Setup wiringPi
-    //if (wiringPiSetup() < 0) {
     if (wiringPiSetupSys() < 0) {
         qWarning() << "Unable to setup wiringPi";
         return;
@@ -34,6 +34,11 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
     //if (wiringPiISR (2, INT_EDGE_RISING, &handleInterrupt) < 0) {
     if (wiringPiISR (27, INT_EDGE_RISING, &handleInterrupt) < 0) {
         qWarning() << "Unable to setup ISR";
+        return;
+    }
+
+    if (wiringPiISR(24, INT_EDGE_BOTH, &handleReboot) < 0) {
+        qWarning() << "Unable to setup reboot bin";
         return;
     }
 }
@@ -50,6 +55,10 @@ void GpioManager::handleInterrupt() {
     qDebug() << "Got a pulse:" << QDateTime::currentDateTime().time();
     // Using a QTimer to get the method executed in the right thread
     QTimer::singleShot(0, m_instance, SLOT(countAndSetTimeout()));
+}
+
+void GpioManager::handleReboot() {
+    QProcess::execute("sudo reboot");
 }
 
 void GpioManager::countAndSetTimeout() {

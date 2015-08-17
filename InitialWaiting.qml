@@ -6,7 +6,7 @@ Rectangle {
 
     property bool active: false
 
-    color: "darkgray"
+    color: "black"
 
     anchors.fill: parent
 
@@ -24,12 +24,12 @@ Rectangle {
         */
 
         anchors.fill: parent
-        anchors.margins: 50
+        anchors.margins: 80
 
         ScaleableText {
             id: txt
             color: "#ff00aa"
-            text: "Hallo Ihr Hübschen!"
+            text: "Lustiges Partybild &"
             font.family: "Roboto"
             font.weight: Font.Thin
             anchors.left: parent.left
@@ -37,7 +37,7 @@ Rectangle {
         }
 
         ScaleableText {
-            text: "Werft bitte eine Münze zwischen 50ct und 2€ ein!"
+            text: "Spende für das Brautpaar!"
             color: "white"
             font.family: "Roboto"
             font.weight: Font.Normal
@@ -46,7 +46,7 @@ Rectangle {
         }
 
         ScaleableText {
-            text: "Das ist eine Spende an das Brautpaar, also seid großzügig :-)"
+            text: "50ct bis 2€ einwerfen!"
             color: "#ff00aa"
             font.family: "Roboto"
             font.weight: Font.Normal
@@ -55,7 +55,7 @@ Rectangle {
         }
 
         ScaleableText {
-            text: "Los geht's!"
+            text: "Bitte lächeln :-)"
             color: "white"
             font.family: "Roboto"
             font.weight: Font.Normal

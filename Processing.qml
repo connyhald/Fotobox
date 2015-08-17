@@ -4,14 +4,14 @@ Rectangle {
     id: root
     signal next
 
-    color: "darkgray"
+    color: "black"
 
     anchors.fill: parent
 
     Column {
         spacing: 20
         anchors.fill: parent
-        anchors.margins: 50
+        anchors.margins: 80
 
         ScaleableText {
             text: "Ihr wart Hammer!"
@@ -22,13 +22,13 @@ Rectangle {
 
         ScaleableText {
             text: "Bitte warten, eure Bilder sind bald fertig."
-            color: "white"
+            color: "#ff00aa"
             anchors.left: parent.left
             anchors.right: parent.right
         }
 
         ScaleableText {
-            text: "Die Selbstmordzelle ist wieder für Euch da in:"
+            text: "Die Fotobox ist wieder für Euch da in:"
             color: "white"
             anchors.left: parent.left
             anchors.right: parent.right
@@ -65,7 +65,7 @@ Rectangle {
     }
 
     function start() {
-        timer.countdown = 60
+        timer.countdown = 80
         timer.start()
     }
 }

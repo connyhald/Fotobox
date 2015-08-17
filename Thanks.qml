@@ -4,16 +4,16 @@ Rectangle {
     id: root
     signal next
 
-    color: "darkgray"
+    color: "black"
 
     anchors.fill: parent
 
     Column {
         anchors.fill: parent
-        anchors.margins: 50
+        anchors.margins: 80
 
         ScaleableText {
-            text: "2€... WOW... Ihr seid super geil!"
+            text: "WOW... Ihr seid super geil!"
             color: "#ff00aa"
             font.family: "Roboto"
             font.weight: Font.Thin
@@ -28,7 +28,7 @@ Rectangle {
         }
 
         ScaleableText {
-            text: "Achtung: Gleich geht es los!"
+            text: "Gleich geht es los!!!"
             color: "#ff00aa"
             font.family: "Roboto"
             font.weight: Font.Thin

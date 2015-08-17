@@ -8,6 +8,10 @@ Window {
 
     visible: true
 
+    Component.onCompleted: {
+        initialWaiting.start()
+    }
+
     InitialWaiting {
         id: initialWaiting
         focus: true
