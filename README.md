@@ -3,7 +3,7 @@
 1) Install qt build deps
  * qt stuff
  * libgphoto2-dev
- * 
+ * wiringpi
 
 2) Compile and install Qt
 
