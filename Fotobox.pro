@@ -2,11 +2,6 @@ TEMPLATE = app
 
 QT += qml quick printsupport
 
-SOURCES += main.cpp \
-    app.cpp \
-    worker.cpp \
-    gpiomanager.cpp
-
 RESOURCES += qml.qrc
 
 LIBS += -lwiringPi
@@ -24,3 +19,9 @@ HEADERS += \
     app.h \
     worker.h \
     gpiomanager.h
+
+SOURCES += main.cpp \
+    app.cpp \
+    worker.cpp \
+    gpiomanager.cpp
+

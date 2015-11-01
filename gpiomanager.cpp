@@ -24,6 +24,8 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
     m_timer.setSingleShot(true);
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
 
+    // Poor mans raspberry pi detection (so we still can run on the desktop for testing)
+    #ifdef __arm__
     // Setup wiringPi
     if (wiringPiSetupSys() < 0) {
         qWarning() << "Unable to setup wiringPi";
@@ -41,6 +43,7 @@ GpioManager::GpioManager(QObject *parent) : QObject(parent)
         qWarning() << "Unable to setup reboot bin";
         return;
     }
+    #endif
 }
 
 GpioManager* GpioManager::instance() {
