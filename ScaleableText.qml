@@ -14,6 +14,8 @@ Item {
         id: txt
         transformOrigin: Item.TopLeft
         scale: parent.width / paintedWidth
+        font.family: "Roboto"
+        font.weight: Font.Light
     }
 }
 

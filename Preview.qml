@@ -83,7 +83,8 @@ Rectangle {
             layer.mipmap: true
             text: root.countdown
             font.pixelSize: 400
-            font.bold: true
+            font.family: "Roboto"
+            font.weight: Font.Bold
             color: "white"
             anchors.centerIn: parent
         }

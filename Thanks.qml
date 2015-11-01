@@ -15,8 +15,6 @@ Rectangle {
         ScaleableText {
             text: "WOW... Ihr seid super geil!"
             color: "#ff00aa"
-            font.family: "Roboto"
-            font.weight: Font.Thin
             anchors.left: parent.left
             anchors.right: parent.right
         }
@@ -30,8 +28,6 @@ Rectangle {
         ScaleableText {
             text: "Gleich geht es los!!!"
             color: "#ff00aa"
-            font.family: "Roboto"
-            font.weight: Font.Thin
             anchors.left: parent.left
             anchors.right: parent.right
         }

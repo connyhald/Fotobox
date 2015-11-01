@@ -37,6 +37,7 @@ Rectangle {
         Text {
             text: timer.countdown + " s"
             color: "white"
+            font.family: "Roboto"
             font.pixelSize: 300
             horizontalAlignment: Text.AlignHCenter
             anchors.left: parent.left

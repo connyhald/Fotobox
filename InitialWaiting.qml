@@ -12,17 +12,6 @@ Rectangle {
 
     Column {
         spacing: 20
-
-        /*
-        populate: Transition {
-            NumberAnimation {
-                properties: "opacity"
-                easing.type: Easing.InOutQuad
-                duration: 2000
-            }
-        }
-        */
-
         anchors.fill: parent
         anchors.margins: 80
 
@@ -30,8 +19,6 @@ Rectangle {
             id: txt
             color: "#ff00aa"
             text: "Lustiges Partybild &"
-            font.family: "Roboto"
-            font.weight: Font.Thin
             anchors.left: parent.left
             anchors.right: parent.right
         }
@@ -39,8 +26,6 @@ Rectangle {
         ScaleableText {
             text: "Spende für das Brautpaar!"
             color: "white"
-            font.family: "Roboto"
-            font.weight: Font.Normal
             anchors.left: parent.left
             anchors.right: parent.right
         }
@@ -48,8 +33,6 @@ Rectangle {
         ScaleableText {
             text: "50ct bis 2€ einwerfen!"
             color: "#ff00aa"
-            font.family: "Roboto"
-            font.weight: Font.Normal
             anchors.left: parent.left
             anchors.right: parent.right
         }
@@ -57,8 +40,6 @@ Rectangle {
         ScaleableText {
             text: "Bitte lächeln :-)"
             color: "white"
-            font.family: "Roboto"
-            font.weight: Font.Normal
             anchors.left: parent.left
             anchors.right: parent.right
         }
