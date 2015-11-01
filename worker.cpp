@@ -51,7 +51,7 @@ QImage Worker::createImage()
         return QImage();
     }
 
-    // TODO: This is twice the resulution we need, leaf it?
+    // This is twice the resolution we need for printing, seems to be fast enough, so lets keep it.
     int tWidth = 2960;
     int tHeight = 2000;
     int outerBorder = 30;
@@ -69,10 +69,23 @@ QImage Worker::createImage()
     QPainter p;
     p.begin(&targetImage);
     p.fillRect(targetImage.rect(), QBrush(backgroundColor));
-    p.drawImage(targetRect1, img1, img1.rect());
-    p.drawImage(targetRect2, img2, img2.rect());
-    p.drawImage(targetRect3, img3, img3.rect());
-    p.drawImage(targetRect4, img4, img4.rect());
+
+    // TODO: This could be a config option
+    bool CAM_IS_UPSIDE_DOWN = true;
+
+    if (CAM_IS_UPSIDE_DOWN) {
+        p.drawImage(targetRect1, img4, img4.rect());
+        p.drawImage(targetRect2, img3, img3.rect());
+        p.drawImage(targetRect3, img2, img2.rect());
+        p.drawImage(targetRect4, img1, img1.rect());
+
+    } else {
+        p.drawImage(targetRect1, img1, img1.rect());
+        p.drawImage(targetRect2, img2, img2.rect());
+        p.drawImage(targetRect3, img3, img3.rect());
+        p.drawImage(targetRect4, img4, img4.rect());
+    }
+
     p.end();
 
     QDateTime now = QDateTime::currentDateTime().toLocalTime();
@@ -81,7 +94,6 @@ QImage Worker::createImage()
     bool success = targetImage.save(path, "JPEG");
 
     qDebug() << "Image saved successfully:" << success << path;
-    //emit imageReadyForPrint();
 
     return targetImage;
 }
@@ -120,5 +132,4 @@ void Worker::printImage(QImage image)
     painter.end();
 
     qDebug() << "Send to printer";
-    //emit imagePrinted();
 }

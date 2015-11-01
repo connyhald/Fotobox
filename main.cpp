@@ -11,14 +11,11 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qDebug() << "STARTING";
-
-    qDebug() << QFontDatabase::addApplicationFont(":/fonts/Roboto-Light.ttf");
-    qDebug() << QFontDatabase::addApplicationFont(":/fonts/Roboto-Regular.ttf");
-    qDebug() << QFontDatabase::addApplicationFont(":/fonts/Roboto-Bold.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/Roboto-Light.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/Roboto-Regular.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/Roboto-Bold.ttf");
 
     QFontDatabase db;
-
     qDebug() << "Available fonts:" << db.families();
 
     Backend backend;
