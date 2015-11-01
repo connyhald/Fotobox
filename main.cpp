@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
 
     qDebug() << "STARTING";
 
-    qDebug() << QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Light.ttf");
-    qDebug() << QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Regular.ttf");
-    qDebug() << QFontDatabase::addApplicationFont("qrc:/fonts/Roboto-Bold.ttf");
+    qDebug() << QFontDatabase::addApplicationFont(":/fonts/Roboto-Light.ttf");
+    qDebug() << QFontDatabase::addApplicationFont(":/fonts/Roboto-Regular.ttf");
+    qDebug() << QFontDatabase::addApplicationFont(":/fonts/Roboto-Bold.ttf");
 
     QFontDatabase db;
 
