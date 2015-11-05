@@ -13,5 +13,6 @@
         <file>ScaleableText.qml</file>
         <file>Thanks.qml</file>
         <file>supergeil1.jpg</file>
+        <file>heart.png</file>
     </qresource>
 </RCC>

@@ -41,10 +41,19 @@ QImage Worker::createImage()
 {
     qDebug() << "Creating final image:" << m_paths;
 
+    // TODO: This could be a config option
+    bool CAM_IS_UPSIDE_DOWN = true;
+
     QImage img1(m_paths[0]);
     QImage img2(m_paths[1]);
     QImage img3(m_paths[2]);
     QImage img4(m_paths[3]);
+
+    QImage icon(":/heart.png");
+
+    if (CAM_IS_UPSIDE_DOWN) {
+        icon = icon.mirrored(true, true);
+    }
 
     if (img1.isNull() || img2.isNull() || img3.isNull() || img4.isNull()) {
         qWarning() << "Could not load one of the image files. Abort.";
@@ -57,7 +66,8 @@ QImage Worker::createImage()
     int outerBorder = 30;
     int innerBorder = 15;
     innerBorder = innerBorder / 2;
-    QColor backgroundColor = QColor::fromRgbF(0.0, 0.0, 0.0);
+    //QColor backgroundColor = QColor::fromRgbF(0.0, 0.0, 0.0);
+    QColor backgroundColor = QColor::fromRgbF(1, 1, 1);
 
     QImage targetImage(QSize(tWidth, tHeight), QImage::Format_ARGB32_Premultiplied);
 
@@ -66,12 +76,14 @@ QImage Worker::createImage()
     QRectF targetRect3(outerBorder,            tHeight/2+innerBorder,  tWidth/2-outerBorder-innerBorder,  tHeight/2-outerBorder-innerBorder);
     QRectF targetRect4(tWidth/2+innerBorder,   tHeight/2+innerBorder,  tWidth/2-outerBorder-innerBorder,  tHeight/2-outerBorder-innerBorder);
 
+    int iconWidth = 558;
+    int iconHeight = 500;
+
+    QRectF targetRect5((tWidth/2)-(iconWidth/2), (tHeight/2)-(iconHeight/2), iconWidth, iconHeight);
+
     QPainter p;
     p.begin(&targetImage);
     p.fillRect(targetImage.rect(), QBrush(backgroundColor));
-
-    // TODO: This could be a config option
-    bool CAM_IS_UPSIDE_DOWN = true;
 
     if (CAM_IS_UPSIDE_DOWN) {
         p.drawImage(targetRect1, img4, img4.rect());
@@ -85,6 +97,8 @@ QImage Worker::createImage()
         p.drawImage(targetRect3, img3, img3.rect());
         p.drawImage(targetRect4, img4, img4.rect());
     }
+
+    p.drawImage(targetRect5, icon, icon.rect());
 
     p.end();
 
