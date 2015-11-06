@@ -26,3 +26,8 @@ QtWidgets are needed to build QtPrintsupport
 
 7) Run and have fun :)
 
+Other stuff
+
+* Disable console blanking
+setterm -blank 0 -powersave off
+
